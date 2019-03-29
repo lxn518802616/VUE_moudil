@@ -13,7 +13,7 @@ import router from '../router';
 let config = {
  // baseURL: process.env.baseURL || process.env.apiUrl || "" //api地址
   // baseURL: "http://10.101.100.87/cqm/jj",
-  baseURL: "http://10.160.83.35:8080/cqm/jj",
+  baseURL: "",
   // baseURL: "http://10.101.97.85:8081/CQM/jj",
   // timeout: 60 * 1000, // Timeout  // 过期时间
   timeout: 30 * 1000, // Timeout  // 过期时间
@@ -25,6 +25,8 @@ let config = {
 };
 
 const _axios = axios.create(config);
+
+// axios.defaults.withCredentials = true
 
 _axios.interceptors.request.use(
   function(config) {

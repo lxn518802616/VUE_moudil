@@ -26,6 +26,11 @@
       <li><a href="https://vue-loader.vuejs.org" target="_blank" rel="noopener">vue-loader</a></li>
       <li><a href="https://github.com/vuejs/awesome-vue" target="_blank" rel="noopener">awesome-vue</a></li>
     </ul>
+    <h1>{{ aset }}</h1>
+     <!-- 模拟登录 -->
+    <input type="text" v-model="user">
+    <input type="text" v-model="password">
+    <input type="button" value="登录" @click="redfid">
   </div>
 </template>
 
@@ -34,6 +39,29 @@ export default {
   name: 'HelloWorld',
   props: {
     msg: String
+  },
+  data(){
+      return {
+        aset: '',
+        user: '',
+        password: ''
+      }
+  },
+  mounted(){
+   
+  },
+  methods: {
+      redfid(){
+        //设置cookie
+          document.cookie = 'name=aws'
+          // 通过登录设置cookie
+          this.axios.post('/api/login',JSON.stringify({user:this.user,password:this.password}))
+          .then((result) => {
+            console.log(result)
+          }).catch((err) => {
+            
+          });
+      }
   }
 }
 </script>
